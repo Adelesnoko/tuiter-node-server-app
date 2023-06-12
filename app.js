@@ -17,12 +17,8 @@ app.use(
     })
 );
    
-app.use(
-    cors({
-        credentials: true,
-        origin: "*",
-    })
-);
+app.use(cors()
+ );
 
 app.use(express.json());
 const port = process.env.PORT || 4000;
