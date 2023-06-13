@@ -17,7 +17,20 @@ app.use(
     })
 );
    
-app.use(cors());
+// app.use(cors());
+app.use((req, res, next) => {
+    const allowedOrigins = ["http://localhost:3000", "https://a5--admirable-kringle-708e3b.netlify.app"];
+    const origin = req.headers.origin;
+
+    if (allowedOrigins.includes(origin)) {
+      res.header("Access-Control-Allow-Origin", origin);
+    }
+
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, PATCH, OPTIONS");
+    res.header("Access-Control-Allow-Credentials", "true");
+    next();
+});
 
 app.use(express.json());
 
