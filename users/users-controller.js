@@ -1,4 +1,4 @@
-import people from './users.js'
+import people from './users-dao.js'
 
 let users = people
 const UserController = (app) => {

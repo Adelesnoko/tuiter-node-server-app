@@ -1,4 +1,8 @@
-let users = [];
+import people from "./users.js";
+
+let users = [...people];
+
+export default users;
 
 export const findAllUsers = () => users;
 
