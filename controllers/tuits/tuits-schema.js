@@ -5,7 +5,7 @@ const schema = mongoose.Schema({
     userName: String,
     title: { type: String, default: "NA" },
     time: { type: String, default: Date.now },
-    image: String,
+    image: { type: String, default: "noImage.jpg" },
     tuit: String,
     replies: { type: Number, default: 0 },
     retuits: { type: Number, default: 0 },
