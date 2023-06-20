@@ -23,7 +23,7 @@ app.use(
    
 // app.use(cors());
 app.use((req, res, next) => {
-    const allowedOrigins = ["http://localhost:3000", "https://a5--admirable-kringle-708e3b.netlify.app"];
+    const allowedOrigins = ["http://localhost:3000", "https://a6--admirable-kringle-708e3b.netlify.app"];
     const origin = req.headers.origin;
 
     if (allowedOrigins.includes(origin)) {

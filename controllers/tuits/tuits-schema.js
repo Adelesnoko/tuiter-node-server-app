@@ -1,19 +1,19 @@
 import mongoose from 'mongoose';
 
 const schema = mongoose.Schema({
-    topic: String,
+    topic: { type: String, default: "Undefined" },
     userName: String,
-    title: String,
-    time: String,
+    title: { type: String, default: "NA" },
+    time: { type: String, default: Date.now },
     image: String,
     tuit: String,
-    replies: Number,
-    retuits: Number,
-    likes: Number,
-    dislikes: Number,
-    disliked: Boolean,
-    liked: Boolean,
-    handle: String,
+    replies: { type: Number, default: 0 },
+    retuits: { type: Number, default: 0 },
+    likes: { type: Number, default: 0 },
+    dislikes: { type: Number, default: 0 },
+    disliked: { type: Boolean, default: false },
+    liked: { type: Boolean, default: false },
+    handle: { type: String, default: "@" },
     }, 
     {collection: 'tuits'}
 );

@@ -12,10 +12,22 @@ const createTuit = async (req, res) => {
     res.json(insertedTuit);
 }
 
-const findTuits = async (req, res) => {
-    const tuits = await tuitsDao.findTuits()
+const findAllTuits = async (req, res) => {
+    const tuits = await tuitsDao.findAllTuits()
     res.json(tuits);
-} 
+}
+
+const findTuitsByUserId = async (req, res) => {
+    const user = req.params.username;
+    const tuits = await tuitsDao.findTuitsByUserId(user._id);
+    res.json(tuits);
+}
+
+const findMyTuits = async (req, res) => {
+    const currentUser = req.session["currentUser"];
+    const tuits = await tuitsDao.findTuitsByUserId(currentUser._id);
+    res.json(tuits);
+}
 
 const updateTuit = async (req, res) => {
     const tuitdIdToUpdate = req.params.tid;
@@ -36,8 +48,10 @@ const deleteTuit = async (req, res) => {
    
 
 export default (app) => {
-    app.post('/api/tuits', createTuit);
-    app.get('/api/tuits', findTuits);
-    app.put('/api/tuits/:tid', updateTuit);
-    app.delete('/api/tuits/:tid', deleteTuit);
+    app.post('/tuits', createTuit);
+    app.get('/tuits', findAllTuits);
+    app.get("/tuits/:username", findTuitsByUserId);
+    app.get("/my-tuits", findMyTuits);
+    app.put('/tuits/:tid', updateTuit);
+    app.delete('/tuits/:tid', deleteTuit);
 }

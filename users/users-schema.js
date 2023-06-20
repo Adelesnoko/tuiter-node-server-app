@@ -6,6 +6,15 @@ const usersSchema = new mongoose.Schema({
     type: String,
     firstName: String,
     lastName: String,
+    emial: String,
+    role: {
+        type: String,
+        enum: ["admin", "user", "studnet", "faculty"],
+        default: "user",
+    },
+    dob: Date,
+    created: {type: Date, default: Date.now},
+    married: {type: Boolean, default: false}
     }, 
     { collection: "users" }
 
