@@ -8,8 +8,8 @@ import usersModel from "./users-model.js";
 export const findAllUsers = () => 
     usersModel.find();
     
-export const findUserById = (id) =>
-    usersModel.findById(id);
+export const findUserById = (userId) =>
+    usersModel.findById(userId);
     
 export const findUserByUsername = (username) =>
     usersModel.findOne({ username });
@@ -20,11 +20,11 @@ export const findUserByCredentials = (username, password) =>
 export const createUser = (user) =>
     usersModel.create(user);
   
-export const updateUser = (id, user) =>
-    usersModel.updateOne({ _id: id }, { $set: user });
+export const updateUser = (userId, user) =>
+    usersModel.updateOne({ _id: userId }, { $set: user });
     
-export const deleteUser = (id) =>
-    usersModel.deleteOne({ _id: id });
+export const deleteUser = (userId) =>
+    usersModel.deleteOne({ _id: userId });
 
 // export const findUserById = (uid) => {
 //     const index = users.findIndex((u) => u._id === uid);

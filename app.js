@@ -14,11 +14,17 @@ mongoose.connect(CONNECTION_STRING);
 
 
 const app = express();
+app.set("trust proxy", 1);
 app.use(
     session({
       secret: "any string",
       resave: false,
-      saveUninitialized: true,
+      proxy: true,
+      saveUninitialized: false,
+      cookie: {
+        sameSite: "none",
+        secure: true,
+      },
     })
 );
    
